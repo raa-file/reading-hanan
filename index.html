@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>رحلة قارئة | مبادرة قرائية للطالبات</title>
+<meta name="description" content="مبادرة قرائية للطالبات بإشراف أ / حنان الغامدي: سجّلي كتبك، وشاركي توصياتك واقتباساتك، وعلّقي على «قصاصة وفكرة» كل أسبوع.">
+<meta name="theme-color" content="#1D2F33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F4F1;
+  --white:#FBFCFA;
+  --mist:#DCE6E0;
+  --sage:#A9C5B8;
+  --pine:#2F5D5A;
+  --ink:#1D2F33;
+  --lilac:#B7AAD0;
+  --honey:#D9A441;
+  --muted:#5B6E6C;
+  --line:rgba(29,47,51,.14);
+  --display:'Aref Ruqaa','Amiri','Traditional Arabic',serif;
+  --body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.9;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--honey);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
+section{padding-block:clamp(64px,10vw,120px)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.5}
+h2{font-size:clamp(2rem,4.6vw,3.1rem);margin-bottom:.4em}
+.lead{color:var(--muted);max-width:56ch;font-size:1.1rem}
+
+/* progress bar */
+.progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:60;background:transparent}
+.progress i{display:block;height:100%;width:0;background:var(--honey);transform-origin:right}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(242,244,241,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.5rem;text-decoration:none;white-space:nowrap}
+.top nav{display:flex;gap:2px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{padding:6px 10px;border-radius:99px;text-decoration:none;font-size:.92rem;color:var(--muted);white-space:nowrap;transition:background .2s,color .2s}
+.top nav a:hover{background:var(--mist);color:var(--ink)}
+.top nav a.hot{color:var(--pine);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;border-radius:99px;padding:12px 26px;font-weight:500;font-size:1rem;text-decoration:none;transition:transform .15s,background .2s,box-shadow .2s}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--ink);color:var(--paper)}
+.btn-main:hover{background:var(--pine)}
+.btn-soft{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-soft:hover{background:var(--mist)}
+.btn-sm{padding:8px 18px;font-size:.92rem}
+.btn[disabled]{opacity:.55;cursor:default}
+@media(max-width:980px){.top nav{display:none}.top .btn{margin-inline-start:auto}}
+
+/* hero */
+#hero{padding-block:clamp(40px,7vw,90px) clamp(40px,7vw,80px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center}
+.hero-tag{display:inline-block;background:var(--mist);color:var(--pine);padding:4px 16px;border-radius:99px;font-size:.92rem;margin-bottom:22px}
+h1{font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.35;margin-bottom:.35em}
+.hero p.lead{margin-bottom:34px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.trail{width:100%;height:auto;overflow:visible}
+.trail .path-bg{fill:none;stroke:var(--sage);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
+.trail .path-fg{fill:none;stroke:var(--pine);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.trail.go .path-fg{animation:draw 2.4s .3s cubic-bezier(.6,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.trail .stop circle{fill:var(--paper);stroke:var(--sage);stroke-width:2.5;transition:fill .4s,stroke .4s}
+.trail .stop.done circle{fill:var(--pine);stroke:var(--pine)}
+.trail .stop.now circle{fill:var(--honey);stroke:var(--honey)}
+.trail .stop text{font-family:var(--body);font-size:15px;fill:var(--muted)}
+.trail .stop.now text{fill:var(--ink);font-weight:600}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.trail{max-width:420px;margin-inline:auto}}
+
+/* about */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:start}
+.about-grid .big{font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1.8}
+.about-grid p+p{margin-top:1em}
+.about-grid p{color:var(--muted)}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* goals */
+.goals-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,6vw,80px)}
+.goals-grid h2{position:sticky;top:96px;align-self:start}
+.goal-list{list-style:none}
+.goal-list li{display:flex;gap:20px;padding-block:26px;border-top:1px solid var(--line)}
+.goal-list li:last-child{border-bottom:1px solid var(--line)}
+.goal-list .dot{flex:none;width:12px;height:12px;border-radius:50%;background:var(--lilac);margin-top:12px}
+.goal-list h3{font-size:1.45rem;margin-bottom:2px}
+.goal-list p{color:var(--muted)}
+@media(max-width:860px){.goals-grid{grid-template-columns:1fr}.goals-grid h2{position:static}}
+
+/* plan */
+#plan{background:var(--ink);color:var(--paper)}
+#plan .lead{color:rgba(242,244,241,.7)}
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.phase{padding:0 0 0 24px;position:relative}
+.phase::before{content:"";position:absolute;top:13px;right:38px;left:-4px;border-top:1.5px dashed rgba(169,197,184,.4)}
+.phase:last-child::before{display:none}
+.phase .mark{position:relative;width:28px;height:28px;border-radius:50%;background:var(--honey);color:var(--ink);display:grid;place-items:center;font-weight:600;font-size:.85rem;margin-bottom:22px;z-index:1}
+.phase h3{font-size:1.6rem}
+.phase .when{color:var(--sage);font-size:.92rem;margin-bottom:14px}
+.phase ul{list-style:none;color:rgba(242,244,241,.78);font-size:.98rem}
+.phase li{padding-inline-start:16px;position:relative;margin-bottom:6px}
+.phase li::before{content:"";position:absolute;right:0;top:.85em;width:6px;height:1.5px;background:var(--sage)}
+@media(max-width:860px){
+  .phases{grid-template-columns:1fr;gap:36px}
+  .phase{padding:0 52px 0 0}
+  .phase .mark{position:absolute;right:0;top:0;margin:0}
+  .phase::before{top:28px;bottom:-36px;right:13.5px;left:auto;border-top:0;border-right:1.5px dashed rgba(169,197,184,.4)}
+}
+
+/* challenge */
+.chal-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);margin-top:44px;align-items:start}
+@media(max-width:860px){.chal-grid{grid-template-columns:1fr}}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,34px)}
+.field{display:block;margin-bottom:16px}
+.field>span{display:block;font-size:.92rem;color:var(--muted);margin-bottom:4px}
+.field input,.field textarea,.field select{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 14px;transition:border-color .2s,background .2s}
+.field textarea{resize:vertical;line-height:1.9}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--pine);background:#fff}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+.meter{margin-bottom:26px}
+.meter-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.meter-top b{font-family:var(--display);font-size:1.6rem;font-weight:700}
+.bar{height:10px;border-radius:99px;background:var(--mist);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(270deg,var(--pine),var(--sage));border-radius:99px;transition:width .6s cubic-bezier(.3,.7,.2,1)}
+.meter small{display:block;color:var(--muted);margin-top:8px}
+.log{list-style:none;max-height:520px;overflow:auto}
+.log li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+.log li:first-child{padding-top:0}
+.log .spine{flex:none;width:10px;align-self:stretch;min-height:44px;border-radius:3px}
+.log .info{flex:1;min-width:0}
+.log b{display:block;font-weight:600}
+.log .meta{color:var(--muted);font-size:.9rem}
+.log .note{font-size:.95rem;margin-top:2px}
+.log .acts-mini{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+.icon-btn{background:none;border:0;cursor:pointer;color:var(--muted);padding:4px 8px;border-radius:8px;font-size:.88rem;white-space:nowrap}
+.icon-btn:hover{background:var(--mist);color:var(--ink)}
+.icon-btn.share{color:var(--pine);font-weight:500}
+.empty{color:var(--muted);padding:28px 0;text-align:center}
+.hint{color:var(--muted);font-size:.88rem;margin-top:14px}
+
+/* books */
+#books{background:var(--white)}
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:34px 26px}
+@media(max-width:560px){.shelf{grid-template-columns:repeat(2,1fr);gap:26px 14px}.cover{padding:14px 12px}.cover h3{font-size:1.15rem}.cover span{font-size:.75rem}.book p{font-size:.88rem}}
+.book{display:flex;flex-direction:column}
+.cover{aspect-ratio:3/4;border-radius:4px 12px 12px 4px;padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;position:relative;box-shadow:inset 8px 0 0 rgba(0,0,0,.08),0 14px 24px -14px rgba(29,47,51,.5);margin-bottom:14px;transition:transform .25s}
+.book:hover .cover{transform:translateY(-6px) rotate(-1deg)}
+.cover h3{font-size:1.55rem;line-height:1.45}
+.cover span{font-size:.88rem;opacity:.85}
+.book p{font-size:.95rem;color:var(--muted);flex:1;margin-bottom:10px}
+.rd{width:min(720px,calc(100vw - 24px))}
+.rd .dlg-head h2{font-size:1.9rem}
+.rd-note{background:var(--mist);color:var(--pine);border-radius:12px;padding:10px 16px;font-size:.92rem;margin:12px 0 22px}
+.rd-text p{font-size:1.15rem;line-height:2.2;margin-bottom:1.1em}
+.rd-text h3{font-size:1.4rem;margin:1.2em 0 .3em}
+.rd-moral{border-right:4px solid var(--honey);padding:6px 16px;background:var(--white);border-radius:8px;margin:8px 0 22px}
+.rd-qs{padding-inline-start:1.4em;color:var(--muted)}
+.rd-qs li{margin-bottom:6px}
+.book-acts{display:flex;flex-wrap:wrap;gap:8px}
+.book-src{display:block;color:var(--muted);font-size:.8rem;line-height:1.7;margin-top:10px}
+.tag-s{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.7);font-size:.75rem;padding:0 10px;border-radius:99px;color:var(--ink)}
+
+/* قصاصة وفكرة */
+#clip{background:var(--paper);overflow:hidden}
+.clip-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);margin-top:52px;align-items:start}
+.clip-card{position:relative;background:var(--white);padding:clamp(34px,4vw,50px) clamp(24px,4vw,44px) clamp(28px,4vw,40px);border-radius:4px;box-shadow:0 22px 44px -24px rgba(29,47,51,.5);transform:rotate(-1.4deg);transition:transform .35s}
+.clip-card:hover{transform:rotate(0)}
+.clip-card::before{content:"";position:absolute;top:-14px;right:50%;width:120px;height:30px;transform:translateX(50%) rotate(2.5deg);background:rgba(217,164,65,.55);border-radius:2px}
+.clip-card::after{content:"";position:absolute;inset:auto 0 -9px 0;height:10px;background:linear-gradient(-45deg,transparent 6px,var(--white) 0) 0 0/12px 10px,linear-gradient(45deg,transparent 6px,var(--white) 0) 0 0/12px 10px}
+.clip-week{display:inline-block;font-size:.86rem;color:var(--pine);background:var(--mist);padding:2px 14px;border-radius:99px;margin-bottom:20px}
+.clip-card blockquote{font-family:var(--display);font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.75}
+.clip-card cite{display:block;font-style:normal;color:var(--muted);margin-top:10px}
+.clip-q{margin-top:26px;padding-top:20px;border-top:1.5px dashed var(--sage)}
+.clip-q small{color:var(--pine);font-weight:600;font-size:.9rem}
+.clip-q p{font-size:1.2rem;font-weight:500;line-height:1.8}
+.clip-back{margin-top:20px}
+textarea.three{resize:none;overflow:hidden}
+.lines{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);margin-top:6px}
+.lines i{width:24px;height:4px;border-radius:2px;background:var(--mist);transition:background .2s}
+.lines i.on{background:var(--pine)}
+.lines i.full{background:var(--honey)}
+.comments-head{display:flex;justify-content:space-between;align-items:baseline;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.comments-head h3{font-size:1.4rem}
+.comments{list-style:none;max-height:460px;overflow:auto}
+.comments li{padding:14px 0;border-bottom:1px solid var(--line);animation:pop .4s}
+.comments p{white-space:pre-line;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.who{font-size:.86rem;color:var(--muted)}
+.who b{color:var(--ink);font-weight:600}
+.archive{margin-top:56px;border-top:1px solid var(--line);padding-top:22px}
+.archive summary{cursor:pointer;font-weight:600;font-size:1.1rem;list-style:none;display:flex;gap:10px;align-items:center}
+.archive summary::-webkit-details-marker{display:none}
+.archive summary::before{content:"+";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--mist);color:var(--pine);transition:transform .2s}
+.archive[open] summary::before{transform:rotate(45deg)}
+.archive ul{list-style:none;margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.archive button{width:100%;text-align:start;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .2s;line-height:1.7}
+.archive button:hover{border-color:var(--pine)}
+.archive button b{display:block;font-family:var(--display);font-size:1.15rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.archive button span{font-size:.85rem;color:var(--muted)}
+@media(max-width:860px){.clip-grid{grid-template-columns:1fr}}
+
+/* ركن المشاركات */
+#wall{background:var(--white)}
+.wall-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,56px);margin-top:44px;align-items:start}
+.wall-grid>.panel{position:sticky;top:88px;background:var(--paper)}
+.seg{display:flex;background:var(--mist);border-radius:99px;padding:4px;margin-bottom:22px}
+.seg button{flex:1;border:0;background:transparent;padding:8px 10px;border-radius:99px;cursor:pointer;font-weight:500;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.stars{display:flex;gap:2px}
+.stars button{background:none;border:0;font-size:1.8rem;color:var(--mist);cursor:pointer;line-height:1.1;padding:0 2px;transition:color .15s,transform .15s}
+.stars button:hover{transform:scale(1.15)}
+.stars button.on{color:var(--honey)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{border:1.5px solid var(--line);background:transparent;padding:6px 18px;border-radius:99px;cursor:pointer;transition:all .2s;font-size:.95rem}
+.chip:hover{border-color:var(--pine)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cards{columns:2 250px;column-gap:18px}
+.card{break-inside:avoid;margin-bottom:18px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;animation:pop .45s}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pill{display:inline-block;font-size:.8rem;padding:1px 12px;border-radius:99px;background:var(--mist);color:var(--pine);margin-bottom:10px}
+.pill.q{background:#E6E1F0;color:#4B3F72}
+.card h3{font-size:1.35rem;line-height:1.5}
+.card .by{color:var(--muted);font-size:.9rem}
+.card .st{color:var(--honey);letter-spacing:2px;font-size:1.05rem}
+.card .txt{margin-top:8px;white-space:pre-line}
+.card blockquote{font-family:var(--display);font-size:1.35rem;line-height:1.85;border-right:3px solid var(--honey);padding-right:14px;margin:4px 0 10px}
+.card .extra{color:var(--muted);font-size:.95rem;white-space:pre-line}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+.card-foot b{color:var(--ink);font-weight:600}
+.heart{background:none;border:1.5px solid var(--line);border-radius:99px;padding:2px 12px;cursor:pointer;color:var(--muted);white-space:nowrap;transition:all .2s}
+.heart:hover{border-color:var(--lilac)}
+.heart.on{background:var(--lilac);border-color:var(--lilac);color:var(--ink);cursor:default}
+.demo{background:#F6EBD3;color:#7A5A16;border-radius:12px;padding:8px 14px;font-size:.86rem;margin-top:14px}
+@media(max-width:860px){.wall-grid{grid-template-columns:1fr}.wall-grid>.panel{position:static}}
+
+/* activities */
+.acts{margin-top:44px;list-style:none}
+.acts li{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-top:1px solid var(--line)}
+.acts li:last-child{border-bottom:1px solid var(--line)}
+.acts .kind{font-size:.9rem;color:var(--pine);background:var(--mist);padding:2px 14px;border-radius:99px;justify-self:start}
+.acts .kind.comp{background:#E6E1F0;color:#4B3F72}
+.acts .kind.week{background:#F6EBD3;color:#7A5A16}
+.acts h3{font-size:1.5rem}
+.acts p{color:var(--muted)}
+.acts .when{color:var(--muted);font-size:.92rem;white-space:nowrap}
+@media(max-width:700px){.acts li{grid-template-columns:1fr;gap:6px}}
+
+/* results */
+#results{background:var(--white)}
+.res-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,6vw,80px)}
+.res-list{list-style:none}
+.res-list li{display:flex;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.res-list li:last-child{border-bottom:1px solid var(--line)}
+.res-list svg{flex:none;width:26px;height:26px;margin-top:6px;color:var(--pine)}
+.res-list h3{font-size:1.4rem}
+.res-list p{color:var(--muted)}
+@media(max-width:860px){.res-grid{grid-template-columns:1fr}}
+
+/* stats */
+#stats{background:var(--pine);color:var(--paper);padding-block:clamp(56px,8vw,96px)}
+#stats h2{text-align:center;margin-bottom:10px}
+#stats .sub{text-align:center;color:var(--mist);margin-bottom:44px;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.3;font-weight:700}
+.stat span{color:var(--mist)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);row-gap:40px}}
+
+.credits{display:flex;justify-content:center;gap:clamp(28px,7vw,88px);flex-wrap:wrap;margin-bottom:32px}
+.credits small{display:block;color:var(--muted);font-size:.88rem}
+.credits b{font-family:'Cairo',var(--body);font-size:1.25rem;font-weight:700;color:var(--ink);line-height:1.7}
+footer{padding:56px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem;text-align:center}
+.linkish{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:.86rem;margin-top:12px}
+
+/* dialogs */
+dialog{border:0;border-radius:24px;padding:0;background:var(--paper);color:var(--ink);width:min(520px,calc(100vw - 24px));max-height:calc(100vh - 32px);margin:auto;overflow:auto;box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(29,47,51,.55);backdrop-filter:blur(3px)}
+.dlg{padding:clamp(22px,4vw,34px)}
+.dlg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.dlg-head h2{font-size:2rem;margin:0}
+.x{background:var(--mist);border:0;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.2rem;line-height:1;flex:none}
+.x:hover{background:var(--sage)}
+.now-box{margin:18px 0 24px;padding:18px 20px;background:var(--ink);color:var(--paper);border-radius:16px}
+.now-box small{color:var(--sage)}
+.now-box b{display:block;font-family:var(--display);font-size:1.9rem;line-height:1.5}
+.now-box p{color:rgba(242,244,241,.75);font-size:.95rem}
+.steps{list-style:none;position:relative;margin-bottom:24px}
+.steps li{position:relative;padding:0 44px 22px 0}
+.steps li::before{content:"";position:absolute;right:13px;top:28px;bottom:-2px;border-right:1.5px dashed var(--sage)}
+.steps li:last-child::before{display:none}
+.steps .n{position:absolute;right:0;top:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:600;border:2px solid var(--sage);background:var(--paper);color:var(--muted)}
+.steps li.done .n{background:var(--pine);border-color:var(--pine);color:#fff}
+.steps li.now .n{background:var(--honey);border-color:var(--honey);color:var(--ink)}
+.steps b{font-weight:600}
+.steps span{display:block;color:var(--muted);font-size:.92rem}
+.steps li:not(.done):not(.now) b{color:var(--muted)}
+.mini{list-style:none;font-size:.95rem}
+.mini li{padding:8px 0;border-top:1px solid var(--line)}
+
+/* teacher panel */
+.t-sec{margin-top:26px}
+.t-sec>h3{font-size:1.35rem;margin-bottom:10px}
+.t-tabs{margin-bottom:12px}
+.t-list{list-style:none;max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:14px;padding:0 14px;background:var(--white)}
+.t-list li{display:flex;gap:12px;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.t-list li:last-child{border-bottom:0}
+.t-list .t-txt{min-width:0;flex:1}
+.t-list .t-txt b{font-weight:600}
+.t-list .t-txt span{display:block;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-hide{background:#F4E2E2;color:#8A3B3B;border:0;border-radius:99px;padding:4px 14px;cursor:pointer;font-size:.86rem;flex:none}
+.t-hide:hover{background:#EBCFCF}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,24px);background:var(--ink);color:var(--paper);padding:10px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:all .3s;z-index:100;font-size:.95rem;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .trail .path-fg{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><i id="pbar"></i></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#hero" id="brandName">رحلة قارئة</a>
+    <nav aria-label="أقسام الصفحة">
+      <a href="#about">عن المبادرة</a>
+      <a href="#goals">الأهداف</a>
+      <a href="#plan">الخطة</a>
+      <a href="#challenge">التحدي</a>
+      <a href="#books">الكتب</a>
+      <a href="#clip" class="hot">قصاصة وفكرة</a>
+      <a href="#wall" class="hot">ركن المشاركات</a>
+      <a href="#activities">الأنشطة</a>
+      <a href="#results">النتائج</a>
+    </nav>
+    <button class="btn btn-main btn-sm" data-open-journey>رحلتي القرائية</button>
+  </div>
+</header>
+
+<main>
+
+<!-- الواجهة -->
+<section id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero">
+      <span class="hero-tag" id="heroTag">مبادرة قرائية للطالبات</span>
+      <h1>كل رحلة تبدأ بصفحة</h1>
+      <p class="lead">هنا تسجّلين كتبك، وتوصين زميلاتك بما أحببتِ، وتشاركيننا اقتباساتك، وتكتبين رأيك في «قصاصة وفكرة» كل أسبوع.</p>
+      <div class="hero-actions">
+        <button class="btn btn-main" data-open-journey>ابدئي رحلتي القرائية</button>
+        <a class="btn btn-soft" href="#clip">قصاصة هذا الأسبوع</a>
+      </div>
+    </div>
+    <svg class="trail" id="trail" viewBox="0 0 400 440" role="img" aria-label="مسار الرحلة القرائية بخمس محطات"></svg>
+  </div>
+</section>
+
+<!-- نبذة -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2>عن المبادرة</h2>
+      <p class="big">نؤمن أن القراءة لا تُفرض، بل تُكتشف. لذلك صمّمنا المبادرة كرحلة تمشيها كل طالبة بإيقاعها.</p>
+    </div>
+    <div>
+      <p>«رحلة قارئة» مبادرة مدرسية تدعو الطالبات إلى جعل القراءة عادة يومية ممتعة. تبدأ كل طالبة من محطتها، وتنتقل بين المراحل بحسب ما تقرؤه، وتجد في طريقها أنشطة ومسابقات ورفيقات يشاركنها الشغف.</p>
+      <p>لا تقتصر المبادرة على عدّ الكتب. نريد أن تتعلّم الطالبة كيف تلخّص ما قرأت، وكيف تتحدث عنه بثقة، وتشارك زميلاتها توصياتها واقتباساتها وأفكارها.</p>
+    </div>
+  </div>
+</section>
+
+<!-- الأهداف -->
+<section id="goals">
+  <div class="wrap goals-grid">
+    <h2>أهداف المبادرة</h2>
+    <ul class="goal-list">
+      <li><span class="dot"></span><div><h3>ترسيخ عادة القراءة اليومية</h3><p>عشرون دقيقة كل يوم تكفي لتتحول القراءة من واجب إلى روتين محبّب.</p></div></li>
+      <li><span class="dot"></span><div><h3>زيادة عدد الكتب المقروءة</h3><p>هدف واضح لكل طالبة، وتقدّم يمكن رؤيته ومتابعته.</p></div></li>
+      <li><span class="dot"></span><div><h3>تنويع اهتمامات القراءة</h3><p>من الرواية إلى السيرة، ومن التراث إلى تطوير الذات، لتجد كل طالبة ما يشبهها.</p></div></li>
+      <li><span class="dot"></span><div><h3>تنمية مهارات التلخيص والحوار</h3><p>قراءة تتبعها كتابة وحديث، فتنمو اللغة والثقة معًا.</p></div></li>
+      <li><span class="dot"></span><div><h3>بناء مجتمع قرائي داخل المدرسة</h3><p>طالبات يتبادلن الكتب والتوصيات والآراء ويحتفين بإنجازات بعضهن.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- الخطة -->
+<section id="plan">
+  <div class="wrap">
+    <h2>خطة التنفيذ</h2>
+    <p class="lead">اثنا عشر أسبوعًا، في أربع مراحل متتابعة، وقصاصة جديدة كل أسبوع.</p>
+    <div class="phases">
+      <div class="phase">
+        <div class="mark">1</div>
+        <h3>الانطلاق</h3>
+        <div class="when">الأسبوعان 1 و2</div>
+        <ul>
+          <li>إعلان المبادرة وتعريف الطالبات بها</li>
+          <li>اختيار سفيرات القراءة من كل صف</li>
+          <li>نشر أول «قصاصة وفكرة»</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="mark">2</div>
+        <h3>الاستكشاف</h3>
+        <div class="when">الأسابيع من 3 إلى 6</div>
+        <ul>
+          <li>بدء تحدي القراءة وتسجيل الكتب</li>
+          <li>فتح ركن التوصيات والاقتباسات</li>
+          <li>جلسات قراءة صامتة في الحصص</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="mark">3</div>
+        <h3>المشاركة</h3>
+        <div class="when">الأسابيع من 7 إلى 10</div>
+        <ul>
+          <li>مسابقات وأنشطة قرائية</li>
+          <li>معرض تبادل الكتب</li>
+          <li>حلقات نقاش حول أبرز التعليقات</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="mark">4</div>
+        <h3>الاحتفاء</h3>
+        <div class="when">الأسبوعان 11 و12</div>
+        <ul>
+          <li>قياس النتائج وجمع الإحصائيات</li>
+          <li>تكريم القارئات المتميزات</li>
+          <li>توثيق التجربة ونشر قصص النجاح</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- التحدي -->
+<section id="challenge">
+  <div class="wrap">
+    <h2>تحدّي القراءة</h2>
+    <p class="lead">سجّلي كل كتاب تنهينه، وشاهدي كيف تقترب محطتك التالية، ثم أوصي زميلاتك به.</p>
+    <div class="chal-grid">
+      <div class="panel">
+        <div class="meter">
+          <div class="meter-top"><span>كتبك حتى الآن</span><b id="meterCount">0 من 10</b></div>
+          <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="meterBar"><i id="meterFill"></i></div>
+          <small id="meterText">اختاري كتابك الأول وابدئي.</small>
+        </div>
+        <form id="bookForm" autocomplete="off">
+          <label class="field"><span>اسم الكتاب</span><input name="title" required maxlength="80"></label>
+          <div class="row2">
+            <label class="field"><span>المؤلف</span><input name="author" maxlength="60"></label>
+            <label class="field"><span>عدد الصفحات</span><input name="pages" type="number" min="1" max="3000" inputmode="numeric"></label>
+          </div>
+          <label class="field"><span>رأيك في جملة واحدة</span><input name="note" maxlength="140"></label>
+          <button class="btn btn-main" type="submit">أضيفي الكتاب</button>
+          <p class="hint">تُحفظ قائمتك الشخصية على هذا الجهاز فقط.</p>
+        </form>
+      </div>
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px">
+          <h3 style="font-size:1.5rem">كتبي المقروءة</h3>
+          <button class="btn btn-soft btn-sm" data-open-journey>رحلتي القرائية</button>
+        </div>
+        <ul class="log" id="log"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- الترشيحات -->
+<section id="books">
+  <div class="wrap">
+    <h2>كتب نرشّحها لك</h2>
+    <p class="lead">ثلاثة كتب عربية معروفة تناسب قارئات المرحلة المتوسطة. اقرئي النص المبسّط داخل الصفحة، أو افتحي الأصل من الرابط، وحين تنهين الكتاب أضيفيه إلى قائمتك.</p>
+    <div class="shelf" id="shelf" style="margin-top:40px"></div>
+  </div>
+</section>
+
+<!-- قصاصة وفكرة -->
+<section id="clip">
+  <div class="wrap">
+    <span class="hero-tag">كل أسبوع قصاصة جديدة</span>
+    <h2>قصاصة وفكرة</h2>
+    <p class="lead">اقتباس واحد وسؤال مفتوح كل أسبوع. اقرئي، وتأمّلي، ثم اكتبي رأيك في ثلاثة أسطر على الأكثر.</p>
+    <div class="clip-grid">
+      <article class="clip-card" id="clipCard" aria-live="polite"></article>
+      <div class="panel">
+        <form id="commentForm" autocomplete="off">
+          <label class="field"><span>اسمك</span><input id="cName" required maxlength="40" placeholder="اكتبي اسمك"></label>
+          <label class="field"><span>تعليقك (ثلاثة أسطر على الأكثر)</span>
+            <textarea id="cBody" class="three" rows="3" required maxlength="240" placeholder="ما رأيك؟ اكتبي فكرتك باختصار…"></textarea>
+            <span class="lines" id="cLines" aria-hidden="true"><i></i><i></i><i></i><em style="font-style:normal" id="cLinesTxt">٠ من ٣ أسطر</em></span>
+          </label>
+          <button class="btn btn-main" type="submit" id="cSend">أرسلي تعليقك</button>
+        </form>
+        <div class="comments-head"><h3>آراء الطالبات</h3><span class="who" id="cCount"></span></div>
+        <ul class="comments" id="comments"></ul>
+      </div>
+    </div>
+    <details class="archive" id="archiveBox">
+      <summary>قصاصات الأسابيع الماضية</summary>
+      <ul id="clipArchive"></ul>
+    </details>
+  </div>
+</section>
+
+<!-- ركن المشاركات -->
+<section id="wall">
+  <div class="wrap">
+    <h2>ركن المشاركات</h2>
+    <p class="lead">أوصي زميلاتك بكتاب أحببتِه، أو شاركينا اقتباسًا بقي في ذهنك. كل مشاركة تفتح لغيرك بابًا لكتاب جديد.</p>
+    <div class="wall-grid">
+      <div class="panel">
+        <div class="seg" id="shareSeg" role="group" aria-label="نوع المشاركة">
+          <button type="button" data-kind="rec" aria-pressed="true">توصية بكتاب</button>
+          <button type="button" data-kind="quote" aria-pressed="false">اقتباس</button>
+        </div>
+        <form id="shareForm" autocomplete="off">
+          <div class="row2">
+            <label class="field"><span>اسمك</span><input name="name" id="sName" required maxlength="40"></label>
+            <label class="field"><span>الصف (اختياري)</span><input name="grade" maxlength="20" placeholder="مثال: ثاني متوسط"></label>
+          </div>
+          <div class="row2">
+            <label class="field"><span>اسم الكتاب</span><input name="book" id="sBook" required maxlength="80"></label>
+            <label class="field"><span>المؤلف</span><input name="author" id="sAuthor" maxlength="60"></label>
+          </div>
+          <div data-for="rec">
+            <div class="field"><span>تقييمك للكتاب</span>
+              <div class="stars" id="stars" role="radiogroup" aria-label="التقييم"></div>
+            </div>
+            <label class="field"><span>لماذا توصين به زميلاتك؟</span><textarea name="recBody" rows="3" maxlength="300" placeholder="ما الذي أعجبك؟ ولمن يناسب هذا الكتاب؟"></textarea></label>
+          </div>
+          <div data-for="quote" hidden>
+            <label class="field"><span>نص الاقتباس</span><textarea name="quoteBody" rows="3" maxlength="300" placeholder="انسخي الجملة كما وردت في الكتاب"></textarea></label>
+            <label class="field"><span>لماذا اخترتِه؟ (اختياري)</span><input name="extra" maxlength="200"></label>
+          </div>
+          <button class="btn btn-main" type="submit" id="sSend">انشري توصيتك</button>
+          <p class="demo" data-demo hidden>وضع تجريبي: المشاركات تظهر على هذا الجهاز فقط حتى يُربط الموقع بقاعدة البيانات.</p>
+        </form>
+      </div>
+      <div>
+        <div class="chips" id="wallChips">
+          <button class="chip" data-f="all" aria-pressed="true">الكل</button>
+          <button class="chip" data-f="rec" aria-pressed="false">التوصيات</button>
+          <button class="chip" data-f="quote" aria-pressed="false">الاقتباسات</button>
+        </div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- الأنشطة -->
+<section id="activities">
+  <div class="wrap">
+    <h2>أنشطة ومسابقات</h2>
+    <p class="lead">القراءة أجمل حين نلعب بها ونتشاركها.</p>
+    <ul class="acts">
+      <li><span class="kind week">كل أسبوع</span><div><h3>قصاصة وفكرة</h3><p>اقتباس وسؤال مفتوح تنشره المعلمة، وتعلّق عليه الطالبات في ثلاثة أسطر.</p></div><span class="when">أسبوعيًا</span></li>
+      <li><span class="kind comp">مسابقة</span><div><h3>اقتباس يستحق التعليق</h3><p>تشاركين أجمل جملة وجدتِها في كتابك عبر ركن المشاركات، وتشرحين لماذا أثّرت فيك.</p></div><span class="when">الأسبوع 5</span></li>
+      <li><span class="kind">نشاط</span><div><h3>معرض تبادل الكتب</h3><p>تجلبين كتابًا قرأتِه وتأخذين كتابًا جديدًا من زميلة.</p></div><span class="when">الأسبوع 8</span></li>
+      <li><span class="kind comp">مسابقة</span><div><h3>غلاف بديل</h3><p>أعيدي تصميم غلاف كتاب أحببتِه بفكرتك وألوانك.</p></div><span class="when">الأسبوع 9</span></li>
+      <li><span class="kind">نشاط</span><div><h3>من الصفحة إلى المسرح</h3><p>مشهد قصير تمثّلينه مع زميلاتك من كتاب قرأتموه.</p></div><span class="when">الأسبوع 10</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- الإنجازات -->
+<section id="results">
+  <div class="wrap res-grid">
+    <h2>إنجازات المبادرة</h2>
+    <ul class="res-list" id="resList"></ul>
+  </div>
+</section>
+
+<!-- الإحصائيات -->
+<section id="stats">
+  <div class="wrap">
+    <h2>المبادرة بالأرقام</h2>
+    <p class="sub">أرقام حيّة تتحدّث مع كل مشاركة جديدة</p>
+    <div class="stats" id="stats-grid"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="credits" id="credits">
+      <div data-credit="school"><small>المدرسة</small><b id="creditSchool"></b></div>
+      <div data-credit="team"><small>إعداد وتنفيذ</small><b id="creditTeam"></b></div>
+      <div data-credit="principal"><small>مديرة المدرسة</small><b id="creditPrincipal"></b></div>
+    </div>
+    <p><span id="footName">رحلة قارئة</span>، مبادرة قرائية للطالبات</p>
+    <button class="linkish" data-open-teacher>دخول المعلمة</button>
+  </div>
+</footer>
+
+<!-- نافذة رحلتي القرائية -->
+<dialog id="journey" aria-labelledby="jTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <h2 id="jTitle">رحلتي القرائية</h2>
+      <button class="x" id="jClose" aria-label="إغلاق">×</button>
+    </div>
+    <label class="field" style="margin-top:12px"><span>اسمك (اختياري)</span><input id="jName" maxlength="40" placeholder="اكتبي اسمك"></label>
+    <div class="now-box">
+      <small id="jHello">محطتك الآن</small>
+      <b id="jStage"></b>
+      <p id="jNext"></p>
+    </div>
+    <ol class="steps" id="jSteps"></ol>
+    <h3 style="font-size:1.3rem;margin-bottom:6px">آخر ما قرأتِ</h3>
+    <ul class="mini" id="jBooks"></ul>
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-main btn-sm" href="#challenge" id="jAdd">أضيفي كتابًا</a>
+      <a class="btn btn-soft btn-sm" href="#wall" id="jShare">شاركي توصية</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- نافذة القراءة -->
+<dialog id="reader" class="rd" aria-labelledby="rTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <h2 id="rTitle"></h2>
+      <button class="x" id="rClose" aria-label="إغلاق">×</button>
+    </div>
+    <p class="rd-note" id="rNote"></p>
+    <div class="rd-text" id="rBody"></div>
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-main btn-sm" id="rDone">أنهيتُه، أضيفيه إلى كتبي</button>
+      <button class="btn btn-soft btn-sm" id="rClose2">إغلاق</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- لوحة المعلمة -->
+<dialog id="teacher" class="rd" aria-labelledby="tTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <h2 id="tTitle">لوحة المعلمة</h2>
+      <button class="x" id="tClose" aria-label="إغلاق">×</button>
+    </div>
+    <form id="tLogin" style="margin-top:14px">
+      <label class="field"><span>رمز الدخول</span><input id="tPin" type="password" required autocomplete="current-password"></label>
+      <button class="btn btn-main btn-sm" type="submit">دخول</button>
+      <p class="demo" data-demo hidden>وضع تجريبي: الرمز الافتراضي محدد في إعدادات الصفحة.</p>
+    </form>
+    <div id="tPanel" hidden>
+      <div class="t-sec">
+        <h3>نشر قصاصة الأسبوع</h3>
+        <form id="tClipForm" autocomplete="off">
+          <label class="field"><span>الاقتباس</span><textarea name="quote" rows="3" required maxlength="400"></textarea></label>
+          <label class="field"><span>المصدر (الكتاب أو القائل)</span><input name="source" maxlength="100"></label>
+          <label class="field"><span>السؤال المفتوح</span><input name="question" required maxlength="200"></label>
+          <button class="btn btn-main btn-sm" type="submit">انشري القصاصة</button>
+        </form>
+      </div>
+      <div class="t-sec">
+        <h3>إدارة المحتوى</h3>
+        <div class="chips t-tabs" id="tTabs">
+          <button class="chip" data-t="comments" aria-pressed="true">التعليقات</button>
+          <button class="chip" data-t="shares" aria-pressed="false">المشاركات</button>
+          <button class="chip" data-t="clips" aria-pressed="false">القصاصات</button>
+        </div>
+        <ul class="t-list" id="tList"></ul>
+        <p class="hint">«إخفاء» يزيل العنصر من الصفحة عند جميع الطالبات.</p>
+      </div>
+      <button class="linkish" id="tOut">تسجيل الخروج</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   إعدادات الصفحة: عدّلي هنا الاسم والمدرسة وربط قاعدة البيانات
+   ============================================================ */
+const CONFIG = {
+  initiative: 'رحلة قارئة',
+  teacher: 'أ / حنان الغامدي', // المعلمة المشرفة
+  school: '',                  // اسم المدرسة (يُخفى إن تُرك فارغًا)
+  principal: '',               // مديرة المدرسة (تُخفى إن تُركت فارغة)
+  goal: 10,                    // هدف الكتب لكل طالبة
+
+  // ربط المشاركات بين الطالبات (Supabase)
+  // انسخي الرابط والمفتاح العام من إعدادات المشروع، ثم شغّلي ملف setup.sql مرة واحدة
+  supabase: {
+    url: '',  // مثال: https://xxxx.supabase.co
+    key: ''   // anon public key
+  },
+  localPin: '2468', // رمز المعلمة في الوضع التجريبي فقط (بدون قاعدة بيانات)
+
+  results: [
+    { t: 'قارئات أكثر وانتظام أعلى', d: 'ازداد عدد الطالبات اللاتي يقرأن بانتظام داخل المدرسة وخارجها.' },
+    { t: 'مجتمع يوصي بعضه بعضًا', d: 'صار ركن المشاركات مرجعًا تختار منه الطالبات كتبهن القادمة.' },
+    { t: 'لغة أقوى وحوار أجرأ', d: 'ظهر أثر «قصاصة وفكرة» في قدرة الطالبات على التعبير المكثّف عن آرائهن.' },
+    { t: 'ركن قراءة دائم', d: 'أصبح للمدرسة ركن يتبادل فيه الطالبات الكتب طوال العام.' }
+  ]
+};
+
+const NOTE_RETOLD = 'هذه إعادة صياغة مبسّطة بلغة سهلة، وليست النص الأصلي. بعد أن تستمتعي بها، جرّبي قراءة الأصل مع معلمتك.';
+
+const TEXTS = {
+  'كليلة ودمنة': {
+    head: 'باب القرد والغيلم',
+    note: NOTE_RETOLD,
+    paras: [
+      'كان قردٌ ذكيّ يعيش فوق شجرة تين كثيفة الثمار على ضفة نهر، يأكل منها ويرمي ما يزيد عن حاجته.',
+      'وفي يوم جاء إلى جذع الشجرة غيلم، وهو السلحفاة الكبيرة، متعبًا جائعًا. فألقى له القرد حبّات من التين، فأكلها وشكره. وتكرر اللقاء كل يوم، وصارا صديقين يتبادلان الحديث والحكايات.',
+      'وكانت زوجة الغيلم تنتظره في بيتها على الجزيرة، فلاحظت أنه يتأخر كل يوم، فغارت من هذا الصديق. وأرادت أن تُبعده عنها، فادّعت أنها مريضة، وقالت لزوجها: «قال الأطباء إنه لا شفاء لي إلا بقلب قرد».',
+      'حزن الغيلم، فهو يحب زوجته ولا يريد أن يغدر بصديقه. لكنه خاف عليها، فذهب إلى القرد وقال: «يا صديقي، تعال زُر بيتي في الجزيرة، فزوجتي تحب أن تشكرك». فرح القرد وركب على ظهره، وسار بهما الغيلم في النهر.',
+      'وفي وسط الماء ثقُل السرّ على الغيلم، فاعترف: «زوجتي مريضة، ولا دواء لها إلا قلبك».',
+      'ارتعد القرد من الخوف، لكنه لم يفقد عقله، وقال بهدوء: «ولماذا لم تخبرني من البداية يا أخي؟ لو أخبرتني لقدّمت لك قلبي بنفسي! لكننا نحن القرود نترك قلوبنا معلّقة على الشجرة حين نخرج لزيارة الأصدقاء. فهيا نرجع لآتيك به».',
+      'صدّقه الغيلم وعاد به إلى الشاطئ، فقفز القرد إلى أعلى الشجرة وقال: «يا غافل! هل رأيتَ أحدًا يترك قلبه خارج جسده؟ لقد غدرتَ بي فنجوتُ منك بعقلي، ولن أثق بك بعد اليوم». ورجع الغيلم حزينًا، وقد خسر صديقه بعد أن كاد يؤذيه.'
+    ],
+    moral: 'العبرة: من غدر بصديقه خسره، والعقل الهادئ في وقت الخطر أقوى من الخوف.',
+    qs: ['لماذا وافق الغيلم على خداع صديقه؟ وهل ترين أن له عذرًا؟', 'كيف نجا القرد؟ وما الصفة التي ساعدته؟', 'لو كنتِ مكان الغيلم، فماذا كنتِ ستفعلين؟']
+  },
+  'حي بن يقظان': {
+    head: 'قصة حي بن يقظان',
+    note: NOTE_RETOLD,
+    paras: [
+      'في جزيرة بعيدة لا يسكنها أحد، نشأ طفل اسمه «حي بن يقظان». ترعاه ظبية فقدت صغيرها، فأرضعته وحمته، وكبر بين الحيوانات يقلّد أصواتها وحركاتها.',
+      'ومع الأيام لاحظ حيّ أنه يختلف عن الحيوانات، فليس له قرون ولا مخالب ولا فرو. فصنع لنفسه ثيابًا من الأوراق والجلود، وصنع عصا يدافع بها عن نفسه. وهكذا عرف أن عقله يعوّض ما ينقصه.',
+      'ثم ماتت الظبية التي ربّته، فحزن حزنًا شديدًا. وتساءل: ما الذي كان فيها وتركها؟ لماذا توقفت عن الحركة وجسدها ما زال أمامي؟ فبحث وتأمل طويلًا، ليتعلم أن في الأجسام الحية شيئًا خفيًّا لا يُرى بالعين.',
+      'وتعلّم حيّ كيف يستعمل النار، وراقب النباتات والحيوانات والنجوم والشمس والقمر، وصار يسأل: من أين جاء هذا الكون المنظّم؟ وبعد سنوات طويلة من التأمل والملاحظة وحدها، وصل بعقله إلى أن لهذا العالم خالقًا حكيمًا.',
+      'وذات يوم وصل إلى الجزيرة رجل صالح اسمه «أبسال» يحب العزلة والتأمل. تعارف الاثنان، وعلّمه أبسال الكلام، فاكتشف أن ما وصل إليه حيّ بعقله هو نفسه ما جاءت به الشريعة، وإن اختلفت الطريقة.',
+      'سافر حيّ مع أبسال إلى جزيرة قريبة فيها ناس، ليعلّمهم ما عرف. لكنهم لم يفهموا أفكاره العميقة، وانشغلوا بأمور دنياهم. فعاد الاثنان إلى جزيرتهما يتأملان ويعيشان بهدوء، وقد أدرك حيّ أن لكل إنسان طريقته في الفهم.'
+    ],
+    moral: 'العبرة: العقل والملاحظة والتأمل طريق إلى المعرفة، ولكل إنسان طاقته في الفهم.',
+    qs: ['ما الذي جعل حيًّا يتعلم أنه يختلف عن الحيوانات؟', 'كيف وصل حيّ إلى المعرفة وهو وحده في الجزيرة؟', 'لماذا لم يفهم الناس أفكار حيّ في آخر القصة؟']
+  },
+  'رحلة ابن بطوطة': {
+    head: 'من رحلات ابن بطوطة',
+    note: NOTE_RETOLD,
+    paras: [
+      'وُلد محمد بن عبد الله المعروف بابن بطوطة في مدينة طنجة بالمغرب، ونشأ في بيت علم. وفي شبابه، وهو في أوائل العشرينيات من عمره تقريبًا، ترك بلده قاصدًا الحج، وهو لا يعلم أن سفره سيطول ثلاثين عامًا.',
+      'عبر ابن بطوطة شمال إفريقيا ومصر والشام والحجاز، ثم تابع سفره إلى العراق وبلاد فارس واليمن، وإلى شرق إفريقيا وبلاد الأناضول وآسيا الوسطى، ووصل إلى الهند، وعمل هناك قاضيًا، ثم مضى إلى بلاد أبعد حتى وصل إلى الصين.',
+      'في كل بلد كان يلتقي بالعلماء والتجار والسلاطين، ويسجّل ما يرى من الطعام والملابس والأسواق والمدن والعادات، ويصف رحلات البحر ومخاطر الطريق من العواصف واللصوص.',
+      'وبعد عودته إلى المغرب، طلب منه السلطان أن يروي ما رآه، فأملى رحلته على الكاتب ابن جزي سنة ٧٥٦ هـ تقريبًا، وسُمّي الكتاب «تحفة النظار في غرائب الأمصار وعجائب الأسفار».',
+      'ولهذا الكتاب قيمة كبيرة، فهو يخبرنا كيف عاش الناس في القرن الثامن الهجري في أنحاء العالم المعروف آنذاك، ولا يزال الباحثون يعودون إليه في الجغرافيا والتاريخ.'
+    ],
+    moral: 'العبرة: الفضول والسفر والتعلّم من الشعوب يوسّعان العقل ويصنعان المعرفة.',
+    qs: ['لماذا بدأ ابن بطوطة رحلته؟ وإلى أين انتهت؟', 'ما الذي كان يسجّله في كل بلد يصل إليه؟', 'لو سافرتِ مثله، فأي بلد تحبين زيارته أولًا ولماذا؟']
+  }
+};
+
+const BOOKS = [
+  { title: 'كليلة ودمنة', author: 'ابن المقفع', tag: 'حكايات', bg: '#B7AAD0', fg: '#1D2F33',
+    url: 'https://ar.wikisource.org/wiki/%D9%83%D9%84%D9%8A%D9%84%D8%A9_%D9%88%D8%AF%D9%85%D9%86%D8%A9', src: 'تقرئين هنا باب «القرد والغيلم» مبسّطًا، والرابط للنص الأصلي على ويكي مصدر',
+    d: 'حكايات على ألسنة الحيوان تحمل حِكمًا في الصداقة والذكاء والحذر. يُفضّل اختيار نسخة مبسّطة للناشئة.' },
+  { title: 'حي بن يقظان', author: 'ابن طفيل', tag: 'فكر وخيال', bg: '#D9A441', fg: '#1D2F33',
+    url: 'https://ar.wikisource.org/wiki/%D9%85%D8%A4%D9%84%D9%81:%D8%A7%D8%A8%D9%86_%D8%B7%D9%81%D9%8A%D9%84', src: 'تقرئين هنا القصة مبسّطة، والرابط للنص الأصلي على ويكي مصدر (اختاري «حي بن يقظان» من صفحة المؤلف)',
+    d: 'طفل ينشأ وحيدًا في جزيرة، ويصل إلى المعرفة بالتأمل والملاحظة. يُفضّل اختيار نسخة مبسّطة للناشئة.' },
+  { title: 'رحلة ابن بطوطة', author: 'ابن بطوطة', tag: 'رحلات', bg: '#A9C5B8', fg: '#1D2F33',
+    url: 'https://ar.wikisource.org/wiki/%D8%B1%D8%AD%D9%84%D8%A9_%D8%A7%D8%A8%D9%86_%D8%A8%D8%B7%D9%88%D8%B7%D8%A9', src: 'تقرئين هنا نبذة مبسّطة عن الرحلة، والرابط للنص الأصلي على ويكي مصدر',
+    d: 'مغامرات رحّالة جاب العالم المعروف في زمنه، ويصف البلدان والناس والعادات التي رآها.' }
+];
+
+const STAGES = [
+  { min: 0,  name: 'على أول الطريق', desc: 'اختاري كتابك الأول' },
+  { min: 1,  name: 'قارئة ناشئة',    desc: 'أنهيتِ أول كتاب' },
+  { min: 3,  name: 'مستكشفة',        desc: 'ثلاثة كتب ونظرتك للقراءة تتّسع' },
+  { min: 6,  name: 'رحّالة',          desc: 'ستة كتب وعادتك صارت ثابتة' },
+  { min: 10, name: 'سفيرة القراءة',  desc: 'عشرة كتب، وحان وقت إلهام زميلاتك' }
+];
+
+const SPINES = ['#2F5D5A', '#B7AAD0', '#D9A441', '#A9C5B8', '#7FA6A3', '#8F82B5'];
+
+/* ============================================================ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const fmt = n => Number(n).toLocaleString('en-US');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const AR_DIG = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+const mem = {};
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return k in mem ? mem[k] : d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { mem[k] = v; } }
+};
+
+const state = {
+  name: store.get('rq_name', ''),
+  books: store.get('rq_books', []),
+  liked: store.get('rq_liked', [])
+};
+const save = () => { store.set('rq_name', state.name); store.set('rq_books', state.books); store.set('rq_liked', state.liked); };
+
+let toastT;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+function stageIndex(count) { let i = 0; STAGES.forEach((s, k) => { if (count >= s.min) i = k; }); return i; }
+
+const rtf = new Intl.RelativeTimeFormat('ar', { numeric: 'auto' });
+function ago(iso) {
+  const s = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (s < 60) return 'الآن';
+  if (s < 3600) return rtf.format(-Math.round(s / 60), 'minute');
+  if (s < 86400) return rtf.format(-Math.round(s / 3600), 'hour');
+  if (s < 86400 * 30) return rtf.format(-Math.round(s / 86400), 'day');
+  return dateAr(iso);
+}
+function dateAr(iso) { try { return new Intl.DateTimeFormat('ar-SA', { day: 'numeric', month: 'long' }).format(new Date(iso)); } catch (e) { return ''; } }
+
+/* ============================================================
+   طبقة البيانات: قاعدة بيانات مشتركة أو تخزين محلي تجريبي
+   ============================================================ */
+const DB = (() => {
+  const url = (CONFIG.supabase.url || '').trim().replace(/\/+$/, '');
+  const key = (CONFIG.supabase.key || '').trim();
+  const online = !!(url && key);
+
+  async function req(path, opt = {}) {
+    const r = await fetch(`${url}/rest/v1/${path}`, {
+      method: opt.method || 'GET',
+      headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Prefer: 'return=representation' },
+      body: opt.body ? JSON.stringify(opt.body) : undefined
+    });
+    const t = await r.text(); let j = null; try { j = t ? JSON.parse(t) : null; } catch (e) {}
+    if (!r.ok) throw new Error((j && (j.message || j.hint)) || t || ('HTTP ' + r.status));
+    return j;
+  }
+
+  const L = k => store.get('rq_db_' + k, []);
+  const LS = (k, v) => store.set('rq_db_' + k, v);
+  if (!online && !store.get('rq_db_seeded', false)) {
+    LS('clips', [{ id: 1, quote: 'وخيرُ جليسٍ في الزمانِ كتابُ', source: 'أبو الطيب المتنبي', question: 'ما الكتاب الذي كان جليسك الأجمل هذا العام؟ ولماذا؟', hidden: false, created_at: new Date().toISOString() }]);
+    store.set('rq_db_seeded', true);
+  }
+  const sortDesc = a => a.sort((x, y) => String(y.created_at).localeCompare(String(x.created_at)));
+
+  return {
+    online,
+    async list(t) {
+      if (online) return req(`${t}?select=*&hidden=eq.false&order=created_at.desc&limit=500`);
+      return sortDesc(L(t).filter(x => !x.hidden));
+    },
+    async add(t, row) {
+      if (online) { const r = await req(t, { method: 'POST', body: row }); return r && r[0]; }
+      const all = L(t); const it = { ...row, id: Date.now(), likes: 0, hidden: false, created_at: new Date().toISOString() };
+      all.push(it); LS(t, all); return it;
+    },
+    async like(id) {
+      if (online) return req('rpc/like_share', { method: 'POST', body: { p_id: id } });
+      const all = L('shares'); const it = all.find(x => x.id === id); if (it) { it.likes = (it.likes || 0) + 1; LS('shares', all); }
+    },
+    async check(pin) {
+      if (online) return (await req('rpc/t_check', { method: 'POST', body: { p_pin: pin } })) === true;
+      return pin === CONFIG.localPin;
+    },
+    async publish(pin, c) {
+      if (online) return req('rpc/t_publish_clip', { method: 'POST', body: { p_pin: pin, p_quote: c.quote, p_source: c.source || '', p_question: c.question } });
+      if (pin !== CONFIG.localPin) throw new Error('رمز غير صحيح');
+      return this.add('clips', c);
+    },
+    async hide(pin, t, id) {
+      if (online) return req('rpc/t_hide', { method: 'POST', body: { p_pin: pin, p_table: t, p_id: id } });
+      if (pin !== CONFIG.localPin) throw new Error('رمز غير صحيح');
+      const all = L(t); const it = all.find(x => x.id === id); if (it) { it.hidden = true; LS(t, all); }
+    }
+  };
+})();
+
+const data = { shares: [], clips: [], comments: [] };
+let viewClip = null;
+let loaded = false;
+
+async function loadAll(quiet) {
+  try {
+    const [shares, clips, comments] = await Promise.all([DB.list('shares'), DB.list('clips'), DB.list('comments')]);
+    data.shares = shares || []; data.clips = clips || []; data.comments = comments || [];
+    loaded = true;
+  } catch (e) {
+    console.error(e);
+    if (!quiet) toast('تعذّر تحميل المشاركات، تحقّقي من الاتصال');
+  }
+  renderClip(); renderWall(); renderStats();
+  if (teacherPin) renderTeacherList();
+}
+
+/* ---------- الهوية ---------- */
+document.title = CONFIG.initiative + ' | مبادرة قرائية للطالبات';
+$('#brandName').textContent = CONFIG.initiative;
+$('#footName').textContent = CONFIG.initiative;
+$('#creditSchool').textContent = CONFIG.school;
+$('#creditTeam').textContent = CONFIG.teacher;
+$('#creditPrincipal').textContent = CONFIG.principal;
+$$('[data-credit]').forEach(el => { const k = el.dataset.credit; const v = k === 'team' ? CONFIG.teacher : CONFIG[k]; if (!v) el.hidden = true; });
+$('#heroTag').textContent = 'مبادرة قرائية بإشراف ' + CONFIG.teacher + (CONFIG.school ? ' · ' + CONFIG.school : '');
+if (!DB.online) $$('[data-demo]').forEach(e => e.hidden = false);
+
+/* ---------- مسار الواجهة ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const trail = $('#trail');
+const pathD = 'M 330 410 C 330 330, 90 360, 120 280 S 310 230, 250 160 S 70 110, 130 36';
+trail.innerHTML = `<path class="path-bg" d="${pathD}"/><path class="path-fg" id="fgPath" pathLength="1" d="${pathD}"/>`;
+const fg = $('#fgPath');
+const total = fg.getTotalLength();
+const stops = STAGES.map((s, i) => {
+  const p = fg.getPointAtLength(total * (i / (STAGES.length - 1)));
+  const g = document.createElementNS(NS, 'g');
+  g.setAttribute('class', 'stop');
+  const leftSide = p.x < 200;
+  g.innerHTML = `<circle cx="${p.x}" cy="${p.y}" r="11"/><text x="${p.x + (leftSide ? 22 : -22)}" y="${p.y + 5}" text-anchor="${leftSide ? 'end' : 'start'}">${s.name}</text>`;
+  trail.appendChild(g);
+  return g;
+});
+requestAnimationFrame(() => trail.classList.add('go'));
+
+/* ---------- الرسم العام للحالة الشخصية ---------- */
+function render() {
+  const n = state.books.length, goal = CONFIG.goal, si = stageIndex(n);
+  stops.forEach((g, i) => { g.classList.toggle('done', i < si); g.classList.toggle('now', i === si); });
+
+  const pct = Math.min(100, Math.round(n / goal * 100));
+  $('#meterCount').textContent = `${fmt(n)} من ${fmt(goal)}`;
+  $('#meterFill').style.width = pct + '%';
+  $('#meterBar').setAttribute('aria-valuenow', Math.min(n, goal));
+  $('#meterBar').setAttribute('aria-valuemax', goal);
+  const nxt = STAGES[si + 1];
+  $('#meterText').textContent = nxt ? `باقٍ ${fmt(nxt.min - n)} ${nxt.min - n === 1 ? 'كتاب' : 'كتب'} لتصلي إلى محطة «${nxt.name}».` : 'وصلتِ إلى آخر محطة. استمري وألهمي زميلاتك.';
+
+  const log = $('#log');
+  if (!n) { log.innerHTML = '<li class="empty" style="display:block">لم تسجّلي كتبًا بعد. أضيفي أول كتاب لتبدأ الرحلة.</li>'; }
+  else {
+    log.innerHTML = state.books.slice().reverse().map(b => `
+      <li>
+        <span class="spine" style="background:${b.color}"></span>
+        <div class="info">
+          <b>${esc(b.title)}</b>
+          <span class="meta">${[b.author, b.pages ? fmt(b.pages) + ' صفحة' : ''].filter(Boolean).map(esc).join('، ')}</span>
+          ${b.note ? `<div class="note">${esc(b.note)}</div>` : ''}
+        </div>
+        <div class="acts-mini">
+          <button class="icon-btn share" data-share="${b.id}">أوصي به</button>
+          <button class="icon-btn" data-del="${b.id}" aria-label="حذف ${esc(b.title)}">حذف</button>
+        </div>
+      </li>`).join('');
+  }
+  renderShelf();
+  renderJourney();
+}
+
+function renderShelf() {
+  $('#shelf').innerHTML = BOOKS.map((b, i) => {
+    const has = state.books.some(x => x.title === b.title);
+    return `<article class="book">
+      <div class="cover" style="background:${b.bg};color:${b.fg}">
+        <span class="tag-s">${esc(b.tag)}</span>
+        <h3 style="margin-top:22px">${esc(b.title)}</h3>
+        <span>${esc(b.author)}</span>
+      </div>
+      <p>${esc(b.d)}</p>
+      <div class="book-acts">
+        ${TEXTS[b.title] ? `<button class="btn btn-main btn-sm" data-read="${i}">اقرئيه هنا</button>` : ''}
+        ${b.url ? `<a class="btn btn-soft btn-sm" href="${b.url}" target="_blank" rel="noopener">النص الأصلي ↗</a>` : ''}
+        <button class="btn btn-soft btn-sm" data-rec="${i}" ${has ? 'disabled' : ''}>${has ? 'في قائمتك ✓' : 'أنهيتُه، أضيفيه'}</button>
+      </div>
+      <small class="book-src">${esc(b.src)}</small>
+    </article>`;
+  }).join('');
+}
+
+const rdr = $('#reader');
+let rdrBook = null;
+function openReader(i) {
+  const b = BOOKS[i], t = TEXTS[b.title]; if (!t) return;
+  rdrBook = b;
+  $('#rTitle').textContent = t.head;
+  $('#rNote').textContent = t.note;
+  $('#rBody').innerHTML = t.paras.map(x => `<p>${esc(x)}</p>`).join('')
+    + `<div class="rd-moral">${esc(t.moral)}</div>`
+    + `<h3>أسئلة للتفكير</h3><ol class="rd-qs">${t.qs.map(q => `<li>${esc(q)}</li>`).join('')}</ol>`;
+  const has = state.books.some(x => x.title === b.title);
+  $('#rDone').disabled = has; $('#rDone').textContent = has ? 'في قائمتك ✓' : 'أنهيتُه، أضيفيه إلى كتبي';
+  rdr.showModal(); rdr.scrollTop = 0;
+}
+$('#rClose').addEventListener('click', () => rdr.close());
+$('#rClose2').addEventListener('click', () => rdr.close());
+rdr.addEventListener('click', e => { if (e.target === rdr) rdr.close(); });
+$('#rDone').addEventListener('click', () => { if (rdrBook) addBook({ title: rdrBook.title, author: rdrBook.author }); rdr.close(); });
+$('#shelf').addEventListener('click', e => {
+  const rd = e.target.closest('[data-read]'); if (rd) { openReader(+rd.dataset.read); return; }
+  const btn = e.target.closest('[data-rec]'); if (!btn) return;
+  const b = BOOKS[+btn.dataset.rec];
+  addBook({ title: b.title, author: b.author });
+});
+
+function renderJourney() {
+  const n = state.books.length, si = stageIndex(n), nxt = STAGES[si + 1];
+  $('#jName').value = state.name;
+  $('#jHello').textContent = state.name ? `محطتك الآن يا ${state.name}` : 'محطتك الآن';
+  $('#jStage').textContent = STAGES[si].name;
+  $('#jNext').textContent = nxt ? `أنهيتِ ${fmt(n)} ${n === 1 ? 'كتابًا' : 'كتب'}. باقٍ ${fmt(nxt.min - n)} للوصول إلى «${nxt.name}».` : `أنهيتِ ${fmt(n)} كتب، وهذه أعلى محطة في الرحلة.`;
+  $('#jSteps').innerHTML = STAGES.map((s, i) => `
+    <li class="${i < si ? 'done' : i === si ? 'now' : ''}">
+      <span class="n">${i < si ? '✓' : i + 1}</span>
+      <b>${s.name}</b><span>${s.desc}</span>
+    </li>`).join('');
+  const last = state.books.slice(-3).reverse();
+  $('#jBooks').innerHTML = last.length ? last.map(b => `<li>${esc(b.title)}</li>`).join('') : '<li style="color:var(--muted)">لا توجد كتب بعد.</li>';
+}
+
+/* ---------- إضافة وحذف الكتب ---------- */
+function addBook({ title, author = '', pages = '', note = '' }) {
+  title = title.trim(); if (!title) return false;
+  if (state.books.some(b => b.title === title)) { toast('هذا الكتاب مسجّل لديك'); return false; }
+  const prevStage = stageIndex(state.books.length);
+  state.books.push({ id: Date.now() + Math.random().toString(36).slice(2, 6), title, author: author.trim(), pages: pages ? +pages : '', note: note.trim(), color: SPINES[state.books.length % SPINES.length] });
+  save(); render();
+  const st = stageIndex(state.books.length);
+  toast(st > prevStage ? `مبروك! وصلتِ إلى محطة «${STAGES[st].name}»` : 'تمت إضافة الكتاب، أوصي به زميلاتك من ركن المشاركات');
+  return true;
+}
+$('#bookForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  if (addBook(Object.fromEntries(f))) e.target.reset();
+});
+$('#log').addEventListener('click', e => {
+  const sh = e.target.closest('[data-share]');
+  if (sh) { const b = state.books.find(x => x.id === sh.dataset.share); if (b) prefillShare(b.title, b.author); return; }
+  const id = e.target.dataset.del; if (!id) return;
+  state.books = state.books.filter(b => b.id !== id); save(); render();
+});
+
+/* ============================================================
+   قصاصة وفكرة
+   ============================================================ */
+function renderClip() {
+  const card = $('#clipCard'), clips = data.clips;
+  const c = clips.find(x => x.id === viewClip) || clips[0];
+  const form = $('#commentForm');
+  if (!c) {
+    card.innerHTML = `<span class="clip-week">قريبًا</span><blockquote>${loaded ? 'لم تُنشر قصاصة هذا الأسبوع بعد' : 'جارٍ التحميل…'}</blockquote><div class="clip-q"><p style="color:var(--muted);font-size:1rem">تابعي الصفحة، فالقصاصة الجديدة تُنشر كل أسبوع.</p></div>`;
+    $$('input,textarea,button', form).forEach(x => x.disabled = true);
+    $('#comments').innerHTML = ''; $('#cCount').textContent = '';
+    $('#archiveBox').hidden = true;
+    return;
+  }
+  $$('input,textarea,button', form).forEach(x => x.disabled = false);
+  viewClip = c.id;
+  const isNow = c.id === clips[0].id;
+  card.innerHTML = `
+    <span class="clip-week">${isNow ? 'قصاصة هذا الأسبوع' : 'من قصاصات الأسابيع الماضية'} · ${esc(dateAr(c.created_at))}</span>
+    <blockquote>«${esc(c.quote)}»</blockquote>
+    ${c.source ? `<cite>— ${esc(c.source)}</cite>` : ''}
+    <div class="clip-q"><small>السؤال المفتوح</small><p>${esc(c.question)}</p></div>
+    ${isNow ? '' : '<button class="btn btn-soft btn-sm clip-back" data-clip-now>العودة إلى قصاصة هذا الأسبوع</button>'}`;
+
+  const cm = data.comments.filter(x => x.clip_id === c.id);
+  $('#cCount').textContent = cm.length ? `${fmt(cm.length)} ${cm.length === 1 ? 'تعليق' : 'تعليقات'}` : '';
+  $('#comments').innerHTML = cm.length
+    ? cm.map(x => `<li><div class="who"><b>${esc(x.name)}</b> · ${esc(ago(x.created_at))}</div><p>${esc(x.body)}</p></li>`).join('')
+    : '<li class="empty" style="display:block;border:0">كوني أول من يكتب رأيه في هذه القصاصة.</li>';
+
+  const past = clips.slice(1);
+  $('#archiveBox').hidden = !past.length;
+  $('#clipArchive').innerHTML = past.map(p => {
+    const k = data.comments.filter(x => x.clip_id === p.id).length;
+    return `<li><button data-clip="${p.id}"><b>«${esc(p.quote)}»</b><span>${esc(dateAr(p.created_at))} · ${fmt(k)} ${k === 1 ? 'تعليق' : 'تعليقات'}</span></button></li>`;
+  }).join('');
+}
+$('#clipCard').addEventListener('click', e => { if (e.target.closest('[data-clip-now]')) { viewClip = null; renderClip(); } });
+$('#clipArchive').addEventListener('click', e => {
+  const b = e.target.closest('[data-clip]'); if (!b) return;
+  viewClip = +b.dataset.clip; renderClip();
+  $('#clip').scrollIntoView({ behavior: 'smooth' });
+});
+
+/* حدّ الأسطر الثلاثة */
+const ta = $('#cBody');
+let lastOk = '';
+function lineInfo() {
+  const cs = getComputedStyle(ta);
+  const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.9;
+  const pad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+  const prev = ta.style.height; ta.style.height = '0px';
+  const sh = ta.scrollHeight; ta.style.height = prev;
+  const lines = ta.value ? Math.max(1, Math.round((sh - pad) / lh)) : 0;
+  return { lines, newlines: (ta.value.match(/\n/g) || []).length };
+}
+function paintLines(n) {
+  $$('#cLines i').forEach((i, k) => { i.classList.toggle('on', k < n && n < 3); i.classList.toggle('full', k < n && n >= 3); });
+  $('#cLinesTxt').textContent = `${AR_DIG(Math.min(n, 3))} من ٣ أسطر`;
+}
+ta.addEventListener('input', () => {
+  const { lines, newlines } = lineInfo();
+  if (lines > 3 || newlines > 2) { ta.value = lastOk; toast('التعليق ثلاثة أسطر على الأكثر'); paintLines(lineInfo().lines); return; }
+  lastOk = ta.value; paintLines(lines);
+});
+$('#cName').value = state.name;
+
+$('#commentForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name = $('#cName').value.trim(), body = ta.value.trim();
+  if (!name || !body || !viewClip) return;
+  const btn = $('#cSend'); btn.disabled = true;
+  try {
+    const row = await DB.add('comments', { clip_id: viewClip, name, body });
+    if (row) data.comments.unshift(row);
+    state.name = name; save();
+    ta.value = ''; lastOk = ''; paintLines(0);
+    renderClip(); renderStats();
+    toast('شكرًا! نُشر تعليقك');
+  } catch (err) { console.error(err); toast('تعذّر إرسال التعليق، حاولي مرة أخرى'); }
+  btn.disabled = false;
+});
+
+/* ============================================================
+   ركن المشاركات: توصيات واقتباسات
+   ============================================================ */
+let shareKind = 'rec', stars = 0, wallFilter = 'all';
+
+function setKind(k) {
+  shareKind = k;
+  $$('#shareSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.kind === k));
+  $$('[data-for]').forEach(d => d.hidden = d.dataset.for !== k);
+  $('#sSend').textContent = k === 'rec' ? 'انشري توصيتك' : 'انشري الاقتباس';
+}
+$('#shareSeg').addEventListener('click', e => { const b = e.target.closest('[data-kind]'); if (b) setKind(b.dataset.kind); });
+
+function paintStars() {
+  $('#stars').innerHTML = [1, 2, 3, 4, 5].map(n => `<button type="button" role="radio" aria-checked="${n === stars}" aria-label="${n} من 5" class="${n <= stars ? 'on' : ''}" data-s="${n}">★</button>`).join('');
+}
+$('#stars').addEventListener('click', e => { const b = e.target.closest('[data-s]'); if (b) { stars = +b.dataset.s; paintStars(); } });
+paintStars();
+
+function prefillShare(book, author) {
+  setKind('rec');
+  $('#sBook').value = book || ''; $('#sAuthor').value = author || '';
+  if (!$('#sName').value) $('#sName').value = state.name;
+  $('#wall').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => $('#sBook').form.querySelector('[name=recBody]').focus({ preventScroll: true }), 600);
+}
+$('#sName').value = state.name;
+
+$('#shareForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = Object.fromEntries(new FormData(e.target));
+  const body = (shareKind === 'rec' ? f.recBody : f.quoteBody || '').trim();
+  if (!body) { toast(shareKind === 'rec' ? 'اكتبي سبب توصيتك بالكتاب' : 'اكتبي نص الاقتباس'); return; }
+  if (shareKind === 'rec' && !stars) { toast('اختاري تقييمك للكتاب بالنجوم'); return; }
+  const row = {
+    kind: shareKind, name: f.name.trim(), grade: (f.grade || '').trim() || null,
+    book: f.book.trim(), author: (f.author || '').trim() || null, body,
+    extra: shareKind === 'quote' ? ((f.extra || '').trim() || null) : null,
+    stars: shareKind === 'rec' ? stars : null
+  };
+  const btn = $('#sSend'); btn.disabled = true;
+  try {
+    const saved = await DB.add('shares', row);
+    if (saved) data.shares.unshift(saved);
+    state.name = row.name; save();
+    const keepName = row.name, keepGrade = f.grade;
+    e.target.reset(); $('#sName').value = keepName; e.target.grade.value = keepGrade || '';
+    stars = 0; paintStars();
+    renderWall(); renderStats();
+    toast(shareKind === 'rec' ? 'نُشرت توصيتك، شكرًا لك!' : 'نُشر اقتباسك، شكرًا لك!');
+  } catch (err) { console.error(err); toast('تعذّر النشر، حاولي مرة أخرى'); }
+  btn.disabled = false;
+});
+
+function renderWall() {
+  const list = data.shares.filter(s => wallFilter === 'all' || s.kind === wallFilter);
+  if (!list.length) {
+    $('#cards').innerHTML = `<p class="empty">${loaded ? 'لا توجد مشاركات بعد. كوني أول من يشارك!' : 'جارٍ التحميل…'}</p>`;
+    return;
+  }
+  $('#cards').innerHTML = list.map(s => {
+    const liked = state.liked.includes(s.id);
+    const foot = `<div class="card-foot"><span><b>${esc(s.name)}</b>${s.grade ? ' · ' + esc(s.grade) : ''} · ${esc(ago(s.created_at))}</span>
+      <button class="heart ${liked ? 'on' : ''}" data-like="${s.id}" aria-label="أعجبني">♥ ${fmt(s.likes || 0)}</button></div>`;
+    if (s.kind === 'quote') return `<article class="card"><span class="pill q">اقتباس</span>
+      <blockquote>«${esc(s.body)}»</blockquote>
+      <div class="by">${esc(s.book)}${s.author ? ' — ' + esc(s.author) : ''}</div>
+      ${s.extra ? `<p class="extra" style="margin-top:8px">${esc(s.extra)}</p>` : ''}${foot}</article>`;
+    return `<article class="card"><span class="pill">توصية</span>
+      <h3>${esc(s.book)}</h3>
+      <div class="by">${s.author ? esc(s.author) + ' · ' : ''}<span class="st" aria-label="${s.stars} من 5">${'★'.repeat(s.stars || 0)}</span></div>
+      <p class="txt">${esc(s.body)}</p>${foot}</article>`;
+  }).join('');
+}
+$('#wallChips').addEventListener('click', e => {
+  const c = e.target.closest('[data-f]'); if (!c) return;
+  wallFilter = c.dataset.f;
+  $$('#wallChips .chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+  renderWall();
+});
+$('#cards').addEventListener('click', async e => {
+  const b = e.target.closest('[data-like]'); if (!b) return;
+  const id = +b.dataset.like; if (state.liked.includes(id)) return;
+  state.liked.push(id); save();
+  const s = data.shares.find(x => x.id === id); if (s) s.likes = (s.likes || 0) + 1;
+  renderWall();
+  try { await DB.like(id); } catch (err) { console.error(err); }
+});
+
+/* ============================================================
+   النتائج والأرقام الحيّة
+   ============================================================ */
+const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg>';
+$('#resList').innerHTML = CONFIG.results.map(r => `<li>${check}<div><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p></div></li>`).join('');
+
+const STAT_LABELS = ['طالبة شاركت', 'توصية بكتاب', 'اقتباس مُشارَك', 'تعليق على «قصاصة وفكرة»'];
+$('#stats-grid').innerHTML = STAT_LABELS.map(l => `<div class="stat"><b data-to="0" data-cur="0">0</b><span>${esc(l)}</span></div>`).join('');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let statsSeen = false;
+function animateStats() {
+  $$('#stats-grid [data-to]').forEach(b => {
+    const to = +b.dataset.to, from = +b.dataset.cur; if (to === from) { b.textContent = fmt(to); return; }
+    b.dataset.cur = to;
+    if (reduce) { b.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 1200;
+    (function tick(t) { const p = Math.min(1, (t - t0) / dur); b.textContent = fmt(Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); })(t0);
+  });
+}
+function renderStats() {
+  const names = new Set([...data.shares, ...data.comments].map(x => String(x.name || '').trim()).filter(Boolean));
+  const vals = [names.size, data.shares.filter(s => s.kind === 'rec').length, data.shares.filter(s => s.kind === 'quote').length, data.comments.length];
+  $$('#stats-grid [data-to]').forEach((b, i) => b.dataset.to = vals[i]);
+  if (statsSeen) animateStats();
+}
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return; io.unobserve(en.target); statsSeen = true; animateStats();
+}), { threshold: .4 });
+io.observe($('#stats-grid'));
+
+/* ============================================================
+   لوحة المعلمة
+   ============================================================ */
+const tdlg = $('#teacher');
+let teacherPin = null, tTab = 'comments';
+try { teacherPin = sessionStorage.getItem('rq_tpin'); } catch (e) {}
+function showTeacher() {
+  $('#tLogin').hidden = !!teacherPin; $('#tPanel').hidden = !teacherPin;
+  if (teacherPin) renderTeacherList();
+  tdlg.showModal();
+}
+$$('[data-open-teacher]').forEach(b => b.addEventListener('click', showTeacher));
+$('#tClose').addEventListener('click', () => tdlg.close());
+tdlg.addEventListener('click', e => { if (e.target === tdlg) tdlg.close(); });
+$('#tLogin').addEventListener('submit', async e => {
+  e.preventDefault();
+  const pin = $('#tPin').value.trim();
+  try {
+    if (await DB.check(pin)) {
+      teacherPin = pin; try { sessionStorage.setItem('rq_tpin', pin); } catch (err) {}
+      $('#tPin').value = ''; showTeacher(); toast('أهلًا ' + CONFIG.teacher);
+    } else toast('رمز الدخول غير صحيح');
+  } catch (err) { console.error(err); toast('تعذّر التحقق، تأكدي من إعداد قاعدة البيانات'); }
+});
+$('#tOut').addEventListener('click', () => { teacherPin = null; try { sessionStorage.removeItem('rq_tpin'); } catch (e) {} showTeacher(); });
+
+$('#tClipForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = Object.fromEntries(new FormData(e.target));
+  const c = { quote: f.quote.trim(), source: (f.source || '').trim(), question: f.question.trim() };
+  if (!c.quote || !c.question) return;
+  try {
+    await DB.publish(teacherPin, c);
+    e.target.reset(); viewClip = null;
+    await loadAll();
+    toast('نُشرت قصاصة الأسبوع');
+  } catch (err) { console.error(err); toast('تعذّر النشر: ' + err.message); }
+});
+
+$('#tTabs').addEventListener('click', e => {
+  const c = e.target.closest('[data-t]'); if (!c) return;
+  tTab = c.dataset.t; $$('#tTabs .chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+  renderTeacherList();
+});
+function renderTeacherList() {
+  const rows = data[tTab] || [];
+  const line = x => tTab === 'clips' ? [`«${x.quote}»`, x.question]
+    : tTab === 'shares' ? [`${x.name} · ${x.kind === 'rec' ? 'توصية' : 'اقتباس'}: ${x.book}`, x.body]
+    : [x.name, x.body];
+  $('#tList').innerHTML = rows.length ? rows.map(x => {
+    const [a, b] = line(x);
+    return `<li><div class="t-txt"><b>${esc(a)}</b><span>${esc(b)}</span></div><button class="t-hide" data-hide="${x.id}">إخفاء</button></li>`;
+  }).join('') : '<li style="color:var(--muted)">لا يوجد محتوى.</li>';
+}
+$('#tList').addEventListener('click', async e => {
+  const b = e.target.closest('[data-hide]'); if (!b) return;
+  if (!confirm('إخفاء هذا العنصر من الصفحة؟')) return;
+  try { await DB.hide(teacherPin, tTab, +b.dataset.hide); await loadAll(); toast('تم الإخفاء'); }
+  catch (err) { console.error(err); toast('تعذّر الإخفاء: ' + err.message); }
+});
+if (location.hash === '#teacher') showTeacher();
+
+/* ---------- نافذة الرحلة ---------- */
+const dlg = $('#journey');
+$$('[data-open-journey]').forEach(b => b.addEventListener('click', () => { renderJourney(); dlg.showModal(); }));
+$('#jClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+$('#jAdd').addEventListener('click', () => dlg.close());
+$('#jShare').addEventListener('click', () => dlg.close());
+$('#jName').addEventListener('input', e => {
+  state.name = e.target.value.trim(); save();
+  $('#jHello').textContent = state.name ? `محطتك الآن يا ${state.name}` : 'محطتك الآن';
+  if (!$('#cName').value) $('#cName').value = state.name;
+  if (!$('#sName').value) $('#sName').value = state.name;
+});
+
+/* ---------- شريط التقدم ---------- */
+const pbar = $('#pbar');
+addEventListener('scroll', () => {
+  const h = document.documentElement; const max = h.scrollHeight - h.clientHeight;
+  pbar.style.width = (max > 0 ? h.scrollTop / max * 100 : 0) + '%';
+}, { passive: true });
+
+/* ---------- تشغيل ---------- */
+render();
+paintLines(0);
+loadAll();
+if (DB.online) setInterval(() => { if (!document.hidden) loadAll(true); }, 45000);
+</script>
+</body>
+</html>
