@@ -322,6 +322,28 @@ dialog::backdrop{background:rgba(29,47,51,.55);backdrop-filter:blur(3px)}
 .t-hide{background:#F4E2E2;color:#8A3B3B;border:0;border-radius:99px;padding:4px 14px;cursor:pointer;font-size:.86rem;flex:none}
 .t-hide:hover{background:#EBCFCF}
 
+/* تقدّم الطالبات */
+#teacher{width:min(1000px,calc(100vw - 24px))}
+.t-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.t-sum div{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.t-sum b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1.4}
+.t-sum span{font-size:.85rem;color:var(--muted)}
+.t-tools{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.t-tools input{flex:1;min-width:180px;border:1.5px solid var(--line);background:var(--white);border-radius:99px;padding:7px 16px}
+.t-tools input:focus{outline:none;border-color:var(--pine)}
+.t-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--white);max-height:430px}
+.t-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
+.t-table th{position:sticky;top:0;z-index:1;background:var(--mist);text-align:start;font-weight:600;padding:10px 12px;white-space:nowrap}
+.t-table th button{background:none;border:0;cursor:pointer;font-weight:600}
+.t-table td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
+.t-table td small{display:block;color:var(--muted);font-size:.8rem;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-table .num{font-weight:600;text-align:center}
+.t-bar{width:90px;height:6px;border-radius:99px;background:var(--mist);overflow:hidden;margin-top:4px}
+.t-bar i{display:block;height:100%;background:var(--pine);border-radius:99px}
+.t-stage{display:inline-block;font-size:.8rem;padding:1px 10px;border-radius:99px;background:#F6EBD3;color:#7A5A16;white-space:nowrap}
+.t-stage.top{background:var(--pine);color:#fff}
+@media(max-width:600px){.t-sum{grid-template-columns:repeat(2,1fr)}}
+
 /* toast */
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,24px);background:var(--ink);color:var(--paper);padding:10px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:all .3s;z-index:100;font-size:.95rem;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -463,6 +485,10 @@ dialog::backdrop{background:rgba(29,47,51,.55);backdrop-filter:blur(3px)}
           <small id="meterText">اختاري كتابك الأول وابدئي.</small>
         </div>
         <form id="bookForm" autocomplete="off">
+          <div class="row2">
+            <label class="field"><span>اسمك</span><input name="sname" id="bName" required maxlength="40" placeholder="الاسم الثنائي"></label>
+            <label class="field"><span>الصف</span><input name="sgrade" id="bGrade" maxlength="20" placeholder="مثال: ثاني متوسط"></label>
+          </div>
           <label class="field"><span>اسم الكتاب</span><input name="title" required maxlength="80"></label>
           <div class="row2">
             <label class="field"><span>المؤلف</span><input name="author" maxlength="60"></label>
@@ -470,7 +496,7 @@ dialog::backdrop{background:rgba(29,47,51,.55);backdrop-filter:blur(3px)}
           </div>
           <label class="field"><span>رأيك في جملة واحدة</span><input name="note" maxlength="140"></label>
           <button class="btn btn-main" type="submit">أضيفي الكتاب</button>
-          <p class="hint">تُحفظ قائمتك الشخصية على هذا الجهاز فقط.</p>
+          <p class="hint" id="bookHint">تظهر كتبك لمعلمتك لتتابع تقدّمك في الرحلة.</p>
         </form>
       </div>
       <div class="panel">
@@ -665,6 +691,30 @@ dialog::backdrop{background:rgba(29,47,51,.55);backdrop-filter:blur(3px)}
     </form>
     <div id="tPanel" hidden>
       <div class="t-sec">
+        <h3>تقدّم الطالبات</h3>
+        <div class="t-sum" id="tSum"></div>
+        <div class="t-tools">
+          <input id="tSearch" type="search" placeholder="ابحثي باسم طالبة أو صف">
+          <button class="btn btn-soft btn-sm" id="tRefresh" type="button">تحديث</button>
+          <button class="btn btn-soft btn-sm" id="tCsv" type="button">تنزيل الجدول</button>
+        </div>
+        <div class="t-table-wrap">
+          <table class="t-table">
+            <thead><tr>
+              <th><button data-sort="name">الطالبة</button></th>
+              <th><button data-sort="books">المحطة والكتب</button></th>
+              <th><button data-sort="pages">الصفحات</button></th>
+              <th><button data-sort="recs">توصيات</button></th>
+              <th><button data-sort="quotes">اقتباسات</button></th>
+              <th><button data-sort="comments">تعليقات</button></th>
+              <th><button data-sort="last_at">آخر نشاط</button></th>
+            </tr></thead>
+            <tbody id="tRows"></tbody>
+          </table>
+        </div>
+        <p class="hint">اضغطي على عنوان أي عمود لترتيب الجدول حسبه.</p>
+      </div>
+      <div class="t-sec">
         <h3>نشر قصاصة الأسبوع</h3>
         <form id="tClipForm" autocomplete="off">
           <label class="field"><span>الاقتباس</span><textarea name="quote" rows="3" required maxlength="400"></textarea></label>
@@ -801,10 +851,12 @@ const store = {
 
 const state = {
   name: store.get('rq_name', ''),
+  grade: store.get('rq_grade', ''),
+  device: store.get('rq_device', '') || ((crypto.randomUUID && crypto.randomUUID()) || (Date.now().toString(36) + Math.random().toString(36).slice(2, 12))),
   books: store.get('rq_books', []),
   liked: store.get('rq_liked', [])
 };
-const save = () => { store.set('rq_name', state.name); store.set('rq_books', state.books); store.set('rq_liked', state.liked); };
+const save = () => { store.set('rq_name', state.name); store.set('rq_grade', state.grade); store.set('rq_device', state.device); store.set('rq_books', state.books); store.set('rq_liked', state.liked); };
 
 let toastT;
 function toast(msg) {
@@ -836,11 +888,11 @@ const DB = (() => {
   async function req(path, opt = {}) {
     const r = await fetch(`${url}/rest/v1/${path}`, {
       method: opt.method || 'GET',
-      headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Prefer: 'return=representation' },
+      headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Prefer: opt.prefer || 'return=representation' },
       body: opt.body ? JSON.stringify(opt.body) : undefined
     });
     const t = await r.text(); let j = null; try { j = t ? JSON.parse(t) : null; } catch (e) {}
-    if (!r.ok) throw new Error((j && (j.message || j.hint)) || t || ('HTTP ' + r.status));
+    if (!r.ok) { const er = new Error((j && (j.message || j.hint)) || t || ('HTTP ' + r.status)); er.status = r.status; er.code = j && j.code; throw er; }
     return j;
   }
 
@@ -880,9 +932,31 @@ const DB = (() => {
       if (online) return req('rpc/t_hide', { method: 'POST', body: { p_pin: pin, p_table: t, p_id: id } });
       if (pin !== CONFIG.localPin) throw new Error('رمز غير صحيح');
       const all = L(t); const it = all.find(x => x.id === id); if (it) { it.hidden = true; LS(t, all); }
+    },
+    async addBook(row) {
+      if (online) return req('books', { method: 'POST', body: row, prefer: 'return=minimal' });
+    },
+    async removeBook(clientId, device) {
+      if (online) return req('rpc/remove_book', { method: 'POST', body: { p_client: clientId, p_device: device } });
+    },
+    async progress(pin) {
+      if (online) return (await req('rpc/t_progress', { method: 'POST', body: { p_pin: pin } })) || [];
+      if (pin !== CONFIG.localPin) throw new Error('رمز غير صحيح');
+      return localProgress();
     }
   };
 })();
+
+/* تقدّم الطالبات في الوضع التجريبي: من بيانات هذا الجهاز */
+function localProgress() {
+  const map = {};
+  const get = (n, g) => { n = String(n || '').trim(); if (!n) return null; const k = n; map[k] = map[k] || { name: n, grade: '', books: 0, pages: 0, recs: 0, quotes: 0, comments: 0, last_at: null, recent: [] }; if (g) map[k].grade = g; return map[k]; };
+  const touch = (r, t) => { if (t && (!r.last_at || t > r.last_at)) r.last_at = t; };
+  state.books.forEach(b => { const r = get(b.name || state.name, b.grade || state.grade); if (!r) return; r.books++; r.pages += +b.pages || 0; r.recent.unshift(b.title); touch(r, b.at); });
+  store.get('rq_db_shares', []).filter(x => !x.hidden).forEach(x => { const r = get(x.name, x.grade); if (!r) return; x.kind === 'rec' ? r.recs++ : r.quotes++; touch(r, x.created_at); });
+  store.get('rq_db_comments', []).filter(x => !x.hidden).forEach(x => { const r = get(x.name); if (!r) return; r.comments++; touch(r, x.created_at); });
+  return Object.values(map).map(r => ({ ...r, recent: r.recent.slice(0, 3) }));
+}
 
 const data = { shares: [], clips: [], comments: [] };
 let viewClip = null;
@@ -1029,22 +1103,56 @@ function addBook({ title, author = '', pages = '', note = '' }) {
   title = title.trim(); if (!title) return false;
   if (state.books.some(b => b.title === title)) { toast('هذا الكتاب مسجّل لديك'); return false; }
   const prevStage = stageIndex(state.books.length);
-  state.books.push({ id: Date.now() + Math.random().toString(36).slice(2, 6), title, author: author.trim(), pages: pages ? +pages : '', note: note.trim(), color: SPINES[state.books.length % SPINES.length] });
-  save(); render();
+  state.books.push({ id: Date.now() + Math.random().toString(36).slice(2, 6), title, author: author.trim(), pages: pages ? +pages : '', note: note.trim(), color: SPINES[state.books.length % SPINES.length], name: state.name, grade: state.grade, at: new Date().toISOString(), synced: false });
+  save(); render(); syncBooks();
   const st = stageIndex(state.books.length);
+  if (!state.name) { toast('اكتبي اسمك في «تحدّي القراءة» ليظهر تقدّمك لمعلمتك'); return true; }
   toast(st > prevStage ? `مبروك! وصلتِ إلى محطة «${STAGES[st].name}»` : 'تمت إضافة الكتاب، أوصي به زميلاتك من ركن المشاركات');
   return true;
 }
+
+/* إرسال الكتب إلى قاعدة البيانات لتظهر في لوحة المعلمة */
+let syncing = false;
+async function syncBooks() {
+  if (!DB.online || syncing) return;
+  syncing = true;
+  for (const b of state.books.filter(x => !x.synced)) {
+    const name = (b.name || state.name || '').trim(); if (!name) continue;
+    try {
+      await DB.addBook({ client_id: String(b.id), device: state.device, name, grade: (b.grade || state.grade || '').trim() || null,
+        title: b.title, author: b.author || null, pages: b.pages ? +b.pages : null, note: b.note || null });
+      b.synced = true; b.name = name;
+    } catch (err) {
+      if (err.status === 409 || err.code === '23505') b.synced = true;
+      else { console.error(err); break; }
+    }
+  }
+  save(); syncing = false;
+}
+
+function setName(v, from) {
+  state.name = v.trim(); save();
+  ['#bName', '#cName', '#sName', '#jName'].forEach(id => { const el = $(id); if (el && el !== from && (!el.value || id === '#bName' || id === '#jName')) el.value = state.name; });
+  $('#jHello').textContent = state.name ? `محطتك الآن يا ${state.name}` : 'محطتك الآن';
+}
+$('#bName').value = state.name; $('#bGrade').value = state.grade;
+$('#bName').addEventListener('change', e => { setName(e.target.value, e.target); syncBooks(); });
+$('#bGrade').addEventListener('change', e => { state.grade = e.target.value.trim(); save(); });
+if (!DB.online) $('#bookHint').textContent = 'وضع تجريبي: تُحفظ قائمتك على هذا الجهاز فقط.';
+
 $('#bookForm').addEventListener('submit', e => {
   e.preventDefault();
-  const f = new FormData(e.target);
-  if (addBook(Object.fromEntries(f))) e.target.reset();
+  const f = Object.fromEntries(new FormData(e.target));
+  setName(f.sname, $('#bName')); state.grade = (f.sgrade || '').trim(); save();
+  if (addBook(f)) { e.target.title.value = ''; e.target.author.value = ''; e.target.pages.value = ''; e.target.note.value = ''; }
 });
 $('#log').addEventListener('click', e => {
   const sh = e.target.closest('[data-share]');
   if (sh) { const b = state.books.find(x => x.id === sh.dataset.share); if (b) prefillShare(b.title, b.author); return; }
   const id = e.target.dataset.del; if (!id) return;
-  state.books = state.books.filter(b => b.id !== id); save(); render();
+  const b = state.books.find(x => x.id === id);
+  if (b && b.synced) DB.removeBook(String(b.id), state.device).catch(err => console.error(err));
+  state.books = state.books.filter(x => x.id !== id); save(); render();
 });
 
 /* ============================================================
@@ -1257,9 +1365,57 @@ let teacherPin = null, tTab = 'comments';
 try { teacherPin = sessionStorage.getItem('rq_tpin'); } catch (e) {}
 function showTeacher() {
   $('#tLogin').hidden = !!teacherPin; $('#tPanel').hidden = !teacherPin;
-  if (teacherPin) renderTeacherList();
-  tdlg.showModal();
+  if (teacherPin) { renderTeacherList(); loadProgress(); }
+  if (!tdlg.open) tdlg.showModal();
 }
+
+let progress = [], pSort = 'books', pDir = -1;
+async function loadProgress() {
+  $('#tRows').innerHTML = '<tr><td colspan="7" class="empty">جارٍ التحميل…</td></tr>';
+  try { progress = (await DB.progress(teacherPin)) || []; }
+  catch (err) { console.error(err); progress = []; $('#tRows').innerHTML = `<tr><td colspan="7" class="empty">تعذّر تحميل التقدّم. تأكدي من تشغيل ملف التحديث في قاعدة البيانات.</td></tr>`; $('#tSum').innerHTML = ''; return; }
+  renderProgress();
+}
+function renderProgress() {
+  const q = $('#tSearch').value.trim();
+  const rows = progress.filter(r => !q || String(r.name).includes(q) || String(r.grade || '').includes(q))
+    .sort((a, b) => { const x = a[pSort] ?? '', y = b[pSort] ?? ''; return (typeof x === 'number' ? x - y : String(x).localeCompare(String(y), 'ar')) * pDir; });
+  const all = progress, totBooks = all.reduce((s, r) => s + (+r.books || 0), 0);
+  const reached = all.filter(r => (+r.books || 0) >= CONFIG.goal).length;
+  $('#tSum').innerHTML = [
+    [all.length, 'طالبة مشاركة'], [totBooks, 'كتاب مقروء'],
+    [all.length ? (totBooks / all.length).toFixed(1) : 0, 'متوسط الكتب لكل طالبة'], [reached, 'وصلت إلى هدف ' + CONFIG.goal + ' كتب']
+  ].map(([n, l]) => `<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join('');
+  $('#tRows').innerHTML = rows.length ? rows.map(r => {
+    const n = +r.books || 0, si = stageIndex(n), pct = Math.min(100, Math.round(n / CONFIG.goal * 100));
+    const recent = (r.recent || []).filter(Boolean).join('، ');
+    return `<tr>
+      <td><b>${esc(r.name)}</b><small>${esc(r.grade || '—')}</small></td>
+      <td><span class="t-stage ${si === STAGES.length - 1 ? 'top' : ''}">${esc(STAGES[si].name)}</span> <b>${fmt(n)}</b> من ${fmt(CONFIG.goal)}
+        <div class="t-bar"><i style="width:${pct}%"></i></div>${recent ? `<small title="${esc(recent)}">آخرها: ${esc(recent)}</small>` : ''}</td>
+      <td class="num">${fmt(+r.pages || 0)}</td>
+      <td class="num">${fmt(+r.recs || 0)}</td>
+      <td class="num">${fmt(+r.quotes || 0)}</td>
+      <td class="num">${fmt(+r.comments || 0)}</td>
+      <td>${r.last_at ? esc(ago(r.last_at)) : '—'}</td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="7" class="empty">${progress.length ? 'لا توجد نتائج مطابقة.' : 'لم تسجّل أي طالبة بعد.'}</td></tr>`;
+}
+$('#tSearch').addEventListener('input', renderProgress);
+$('#tRefresh').addEventListener('click', () => { loadProgress(); loadAll(true); });
+$$('[data-sort]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.sort; if (pSort === k) pDir *= -1; else { pSort = k; pDir = k === 'name' ? 1 : -1; }
+  renderProgress();
+}));
+$('#tCsv').addEventListener('click', () => {
+  const head = ['الطالبة', 'الصف', 'المحطة', 'عدد الكتب', 'الصفحات', 'التوصيات', 'الاقتباسات', 'التعليقات', 'آخر نشاط', 'آخر الكتب'];
+  const cell = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const lines = progress.map(r => [r.name, r.grade || '', STAGES[stageIndex(+r.books || 0)].name, +r.books || 0, +r.pages || 0, +r.recs || 0, +r.quotes || 0, +r.comments || 0,
+    r.last_at ? new Date(r.last_at).toLocaleDateString('ar-SA') : '', (r.recent || []).join('، ')].map(cell).join(','));
+  const blob = new Blob(['\ufeff' + [head.map(cell).join(','), ...lines].join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'تقدم-الطالبات.csv'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
 $$('[data-open-teacher]').forEach(b => b.addEventListener('click', showTeacher));
 $('#tClose').addEventListener('click', () => tdlg.close());
 tdlg.addEventListener('click', e => { if (e.target === tdlg) tdlg.close(); });
@@ -1318,12 +1474,8 @@ $('#jClose').addEventListener('click', () => dlg.close());
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 $('#jAdd').addEventListener('click', () => dlg.close());
 $('#jShare').addEventListener('click', () => dlg.close());
-$('#jName').addEventListener('input', e => {
-  state.name = e.target.value.trim(); save();
-  $('#jHello').textContent = state.name ? `محطتك الآن يا ${state.name}` : 'محطتك الآن';
-  if (!$('#cName').value) $('#cName').value = state.name;
-  if (!$('#sName').value) $('#sName').value = state.name;
-});
+$('#jName').addEventListener('input', e => setName(e.target.value, e.target));
+$('#jName').addEventListener('change', syncBooks);
 
 /* ---------- شريط التقدم ---------- */
 const pbar = $('#pbar');
@@ -1333,8 +1485,10 @@ addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ---------- تشغيل ---------- */
+save();
 render();
 paintLines(0);
+syncBooks();
 loadAll();
 if (DB.online) setInterval(() => { if (!document.hidden) loadAll(true); }, 45000);
 </script>
